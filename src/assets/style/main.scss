@@ -1,0 +1,456 @@
+@import "./reset.scss";
+@import "./element.scss";
+
+// 文本省略号
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+// 文本居中
+.text-center {
+  text-align: center
+}
+
+// 文本不换行
+.text-nowarp {
+  white-space: nowrap
+}
+
+.text-success {
+  color: #5DBD63;
+}
+
+.text-primary {
+  color: $c-main;
+}
+
+.text-danger {
+  color: $c-danger;
+}
+
+.text-cursor{
+  cursor: pointer;
+}
+
+.clearfix:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+// 构建flex的函数
+@mixin flex-hor-build($justifyContent: flex-start, $alignItems: center) {
+  display: flex;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+
+// space-between的flex
+.flex--space-between {
+  @include flex-hor-build(space-between, flex-start);
+
+  > form, > div {
+    flex-grow: 1;
+  }
+}
+
+// end的flex
+.flex--end {
+  @include flex-hor-build(flex-end);
+}
+
+// 底布局间隔
+.gap-box {
+  margin-bottom: 15px;
+}
+
+// 左右布局间隔
+.white-space-round-box {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+// 无边框表格
+.form-item__marginLess {
+  margin-bottom: 0 !important;
+}
+// 表单中的文本项
+.form-item__text {
+  & .el-form-item__content, & .el-form-item__label {
+    line-height: 18px;
+  }
+}
+// 垂直弹性布局
+// 可接受多个垂直子块，高度固定的子块要加上类名fixed-section，弹性（高度随屏幕高度而变）的子块要加上类名flexible-section
+// 如：
+// | ————————————————————   |
+// | 固定(.fixed-section)    |
+// | ————————————————————    |
+// | 弹性(.flexible-section) |
+// | ————————————————————    |
+.flexible-column-box {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+
+  .fixed-section {
+    flex: 0 0 auto;
+  }
+
+  .flexible-section {
+    flex: 1 1 auto;
+    height: 100px;
+  }
+
+  //> div:nth-child(1) {
+  //  flex: 0 0 auto;
+  //}
+  //> div:nth-child(2){
+  //  flex: 1 1 auto;
+  //  height: 100px;
+  //}
+}
+
+// 水平弹性布局，左侧固定，右侧弹性
+// | ———— | ———— |
+// | 固定 |  弹性 |
+// | ———— | ———— |
+.flexible-row-box {
+  display: flex;
+
+  .main-content, .tree_grid {
+    width: calc(100% - 240px)
+  }
+
+  .el-pagination {
+    text-align: left;
+    padding-top: 20px;
+  }
+}
+
+// 表格边框，用于带分页表格限制高度，带分页表格必加
+.table-wrapper {
+  height: calc(100% - 50px);
+}
+
+// 侧边单选栏
+//.aside-list-filter {
+//  margin: 0 20px 50px 0;
+//  flex: 0 0 220px;
+//  /*margin-bottom: 50px;*/
+//  border: 1px solid $c-border-grey;
+//  display: flex;
+//  flex-direction: column;
+//
+//  .title, .options-list .option-item {
+//    color: inherit;
+//    display: block;
+//    box-sizing: border-box;
+//    border: none;
+//    line-height: 1;
+//    padding: 15px 20px;
+//    font-size: 14px;
+//    margin-right: 0;
+//    border-bottom: 1px solid $c-border-grey;
+//  }
+//
+//  .title {
+//    color: $c-title;
+//  }
+//
+//  .options-list {
+//    overflow-y: auto;
+//
+//    .option-item {
+//      &.is-selected {
+//        color: $c-main;
+//        background: #ECF5FF;
+//      }
+//    }
+//  }
+//}
+
+// 搜索栏窄边框项目
+.search-form {
+  .narrow-form-item {
+    margin-bottom: 15px;
+  }
+
+  .el-input, .el-select, .el-range-editor{
+    width: 240px;
+    & + .el-button{
+      margin-left: 16px;
+    }
+  }
+
+}
+
+.searchList {
+  position: relative;
+}
+
+.searchList .search-form .el-form-item {
+  margin-bottom: 15px;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.searchList .search-form .el-form-item {
+  margin-bottom: 15px;
+}
+
+.searchList .el-range-separator{
+    width:10%;
+    color: #333;
+}
+
+.search-form button{
+  padding: 10px 9.5px;
+}
+
+// 查询条件，按钮固定右侧
+.btnRight_style {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+// input与btn结合形式的搜索输入框
+.search-input-bar {
+  //width: 348px;
+  display: flex;
+
+  .el-input__inner {
+    width: 240px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .el-button {
+    padding-left: 12px;
+    padding-right: 12px;
+    //padding: 10px 12px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+//// 右对齐的新增按钮容器
+//.add-btn-box {
+//  display: flex;
+//  justify-content: flex-end;
+//  align-items: flex-end;
+//  height: 100%;
+//  margin-bottom: 20px;
+//}
+
+// 编辑弹框（带有分区标题的）
+.edit-dialog {
+  .edit-form__section-title {
+    @extend .formTitle;
+
+    .el-form-item__content {
+      line-height: inherit;
+    }
+  }
+
+  .shot-input {
+    width: 280px;
+  }
+
+  //hr.gap-border-line {
+  //  background-color: $c-border-grey;
+  //  height: 1px;
+  //  border: none;
+  //  margin-bottom: 20px;
+  //}
+
+  //.with-border {
+  //  margin-top: 10px;
+  //  padding-top: 20px;
+  //  border-top: 1px solid $c-border-grey;
+  //}
+}
+
+.statusColor {
+  color: #5DBD63;
+}
+
+.statusColor.middle{
+  color: $c-main;
+}
+
+.statusColor.actived {
+  color: $c-danger;
+}
+
+
+// 国家输入框和按钮样式 begin
+.countryList {
+  position: relative;
+}
+
+.countryBtn {
+  position: absolute;
+  left: 260px;
+  top: 0;
+  width: 96px;
+  height: 36px;
+  text-align: center;
+  color: #426282;
+  border: 1px solid #DCDFE6;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+// 国家输入框和按钮样式 end
+
+// 弹窗标题栏
+.formTitle {
+  background-color: #ECF5FF;
+  color: #333;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+}
+// 底边框，一般用于弹框/表单中
+hr.gap-border-line {
+  background-color: $c-border-grey;
+  height: 1px;
+  border: none;
+  margin-bottom: 20px;
+}
+// 大文本的表单，如包裹模块-扫描功能-扫描结果使用
+.form-readonly--large{
+  .el-form-item__label, .el-form-item__content{
+    font-size: 20px!important;
+    line-height: 2;
+  }
+}
+// 超大型的input,如包裹模块-扫描功能使用
+.input--huge{
+  width: 100% !important;
+  .el-input__inner{
+    height: 72px;
+    font-size: 20px;
+  }
+}
+
+// 表单界面-只读样式 begin
+.form-Readonly .el-form-item {
+  margin-bottom: 20px;
+}
+
+.form-Readonly .el-form-item--medium .el-form-item__content,
+.form-Readonly .el-form-item--medium .el-form-item__label,
+.form-Readonly .el-input--medium .el-input__inner, .form-Readonly .el-input--medium .el-textarea__inner {
+  line-height: initial;
+}
+
+.form-Readonly .el-input--medium .el-input__inner {
+  height: 18px !important;
+}
+
+.form-Readonly .el-input__inner, .form-Readonly .el-textarea__inner {
+  padding: 0 15px 0 8px;
+}
+
+.form-Readonly .el-checkbox-group,
+.form-Readonly .el-radio-group {
+  padding-left: 9px;
+}
+
+.form-Readonly .el-checkbox {
+  margin-bottom: 10px;
+}
+
+// 表单界面-只读样式 end
+
+// 镂空按钮样式
+.operation_btn {
+  text-align: right;
+  padding: 0 0 10px 0;
+  margin-bottom: 10px;
+}
+
+.operation_btn > button {
+  background-color: #fff;
+  border:1px solid rgba(37,156,252,1);
+  border-radius:2px;
+  font-size:14px;
+  font-weight:400;
+  color: #259CFC;
+  outline: 0;
+  padding: 10px 19px;
+  line-height: 14px;
+}
+
+.operation_btn > button:disabled {
+  color: #C0C4CC;
+  cursor: not-allowed;
+  background-image: none;
+  background-color: #FFF;
+  border-color: #EBEEF5;
+}
+// 镂空按钮样式end
+
+// 查看详情，表单样式
+.LOOKDETAILSTYLE .el-form-item {
+    margin-bottom: 20px;
+}
+.LOOKDETAILSTYLE .el-form-item .el-form-item__label,
+.LOOKDETAILSTYLE .el-form-item .el-form-item__content {
+    line-height: inherit;
+}
+
+
+// 组件弹窗，右侧选中框样式 begin
+.COMPONENTS_MODEL_Wrap {
+    display: flex;
+}
+
+.COMPONENTS_MODEL_Box > p {
+    padding: 10px;
+    background-color: #ECF5FF;
+    color: #333;
+    font-weight: 500
+}
+
+.COMPONENTS_MODEL_Selected {
+    padding: 10px;
+    position: relative;
+    height: 48vh;
+    overflow: auto;
+    border: 1px solid #ddd
+}
+
+.COMPONENTS_MODEL_Selected > p {
+    padding: 0 20px;
+    border: 1px solid #ddd;
+    border-radius: 1000px;
+    position: relative;
+    margin-bottom: 10px;
+    height: 32px;
+    line-height: 32px;
+}
+
+.COMPONENTS_MODEL_Selected > p > span {
+    position: absolute;
+    right: 3px;
+    top: -2px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+// 组件弹窗，右侧选中框样式 end
+
+// 可选条件左侧样式 例如价格折扣规则弹窗 begin
+.Optional_Conditions_List .el-checkbox__input.is-disabled + span.el-checkbox__label,
+.Optional_Conditions_List .el-checkbox__input.is-checked+.el-checkbox__label {
+  color: #606266;
+}
+
+.Optional_Conditions_List .el-checkbox__label span{
+  color: #5DBD63;
+}
+// 可选条件左侧样式 例如价格折扣规则弹窗 end
