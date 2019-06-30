@@ -24,11 +24,26 @@ export default new Router({
       component: () => import('../views/login/login'),
       meta: {requireAuth: false}
     },
-
     {
       name: '网站首页',
       path: '/',
-      component: () => import('../views/home'),
+      component: () => import('../components/layouts/BasicLayout'),
+      meta: {requireAuth: true},
+      redirect: '/article/index',
+      children: [
+        {
+          name: '文章',
+          path: '/article',
+          redirect: '/article/index',
+          component: () => import('../components/layouts/RouteView'),
+          meta: {requireAuth: true}
+        }
+      ]
+    },
+    {
+      name:"21312",
+      path:"/Index",
+      component: () => import('../views/index'),
       meta: {requireAuth: true},
       children: [
       ]

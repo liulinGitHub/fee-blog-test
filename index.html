@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./static/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1089261_wzvp5i9mj5.css">
-    <title>fee-blog-web</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <title>free_blog(年轻人自由博客)</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app" class="is-component"></div>
     <!-- built files will be auto injected -->
   </body>
 
 <style>
   body{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
   }
+  #app.is-component {
+    overflow-y: hidden;
+  }
+  #app {
+    height: 100%;
+  }
+
 </style>
 </html>
